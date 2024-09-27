@@ -1,3 +1,4 @@
+var $ = jQuery.noConflict();
 jQuery(function($) {
     /* ハンバーガーメニュー */
     $(function() {
