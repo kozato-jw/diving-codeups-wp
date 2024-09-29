@@ -13,7 +13,7 @@
 
 <body>
   <!-- <header class="header js-top-header"> -->
-    <header class="<?php echo is_front_page() ? 'header js-top-header' : 'header header--sub'; ?>">
+  <header class="<?php echo is_front_page() ? 'header js-top-header' : 'header header--sub'; ?>">
 
     <div class="header__inner">
       <?php
@@ -33,13 +33,13 @@
       <nav class="header__menu main-nav u-desktop">
         <ul class="main-nav__items">
           <li class="main-nav__item">
-            <a class="main-nav__link" href="archive-campaign.html">
+            <a class="main-nav__link" href="<?php echo esc_url(home_url('/campaign/')); ?>">
               <p class="main-nav__link-en">campaign</p>
               <p class="main-nav__link-ja">キャンペーン</p>
             </a>
           </li>
           <li class="main-nav__item">
-            <a class="main-nav__link" href="page-about-us.html">
+            <a class="main-nav__link" href="<?php echo esc_url(home_url('/about-us/')); ?>">
               <p class="main-nav__link-en">about
                 <span class="main-nav__link--initial">u</span>s
               </p>
@@ -47,37 +47,37 @@
             </a>
           </li>
           <li class="main-nav__item">
-            <a class="main-nav__link" href="page-information.html">
+            <a class="main-nav__link" href="<?php echo esc_url(home_url('/information/')); ?>">
               <p class="main-nav__link-en">information</p>
               <p class="main-nav__link-ja">ダイビング情報</p>
             </a>
           </li>
           <li class="main-nav__item">
-            <a class="main-nav__link" href="home.html">
+            <a class="main-nav__link" href="<?php echo esc_url(home_url('/blog/')); ?>">
               <p class="main-nav__link-en">blog</p>
               <p class="main-nav__link-ja">ブログ</p>
             </a>
           </li>
           <li class="main-nav__item">
-            <a class="main-nav__link" href="archive-voice.html">
+            <a class="main-nav__link" href="<?php echo esc_url(home_url('/voice/')); ?>">
               <p class="main-nav__link-en">voice</p>
               <p class="main-nav__link-ja">お客様の声</p>
             </a>
           </li>
           <li class="main-nav__item">
-            <a class="main-nav__link" href="page-price.html">
+            <a class="main-nav__link" href="<?php echo esc_url(home_url('/price/')); ?>">
               <p class="main-nav__link-en">price</p>
               <p class="main-nav__link-ja">料金一覧</p>
             </a>
           </li>
           <li class="main-nav__item">
-            <a class="main-nav__link" href="page-faq.html">
+            <a class="main-nav__link" href="<?php echo esc_url(home_url('/faq/')); ?>">
               <p class="main-nav__link-en main-nav__link-en--faq">faq</p>
               <p class="main-nav__link-ja">よくある質問</p>
             </a>
           </li>
           <li class="main-nav__item">
-            <a class="main-nav__link main-nav__link--contact" href="page-contact.html">
+            <a class="main-nav__link main-nav__link--contact" href="<?php echo esc_url(home_url('/contact/')); ?>">
               <p class="main-nav__link-en">contact</p>
               <p class="main-nav__link-ja">お問い合わせ</p>
             </a>
