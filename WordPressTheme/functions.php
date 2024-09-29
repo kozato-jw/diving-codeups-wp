@@ -63,3 +63,44 @@ function my_theme_enqueue_styles_and_scripts()
   );
 }
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles_and_scripts');
+
+
+function my_setup()
+{
+  add_theme_support('post-thumbnails'); /* アイキャッチ */
+  add_theme_support('automatic-feed-links'); /* RSSフィード */
+  add_theme_support('title-tag'); /* タイトルタグ自動生成 */
+  add_theme_support(
+    'html5',
+    array( /* HTML5のタグで出力 */
+      'search-form',
+      'comment-form',
+      'comment-list',
+      'gallery',
+      'caption',
+    )
+  );
+}
+add_action('after_setup_theme', 'my_setup');
+
+//キャンペーンページの表示件数変更
+function change_posts_per_page_campaign($query)
+{
+  if (is_admin() || ! $query->is_main_query())
+    return;
+  if ($query->is_archive('campaign')) { //カスタム投稿タイプのスラッグを指定
+    $query->set('posts_per_page', '4'); //表示件数を指定
+  }
+}
+add_action('pre_get_posts', 'change_posts_per_page_campaign');
+
+//ボイスページの表示件数変更
+function change_posts_per_page_voice($query)
+{
+  if (is_admin() || ! $query->is_main_query())
+    return;
+  if ($query->is_archive('voice')) { //カスタム投稿タイプのスラッグを指定
+    $query->set('posts_per_page', '6'); //表示件数を指定
+  }
+}
+add_action('pre_get_posts', 'change_posts_per_page_voice');

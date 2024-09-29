@@ -9,7 +9,9 @@
     </picture>
   </section>
   <div class="breadcrumbs contact-breadcrumbs contact-breadcrumbs--complete">
-    <div class="breadcrumbs__inner inner">パンくずリストが入る</div>
+    <div class="inner">
+      <?php get_template_part('parts/breadcrumb'); ?>
+    </div>
   </div>
   <div class="complete contact-complete icon-fish icon-fish--complete">
     <div class="inner">
