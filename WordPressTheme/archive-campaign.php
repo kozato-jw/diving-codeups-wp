@@ -27,7 +27,7 @@
       <div class="campaign-sub__cards">
 
 
-        <!-- ループ多分ここから -->
+        <!-- ループここから -->
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
             <div class="campaign-card js-tab-2">
@@ -41,15 +41,25 @@
                 <!-- アイキャッチここまで -->
               </div>
               <div class="campaign-card__content campaign-card__content--sub">
-                <p class="campaign-card__category"><?php the_field('campaign_1') ?></p>
-                <h2 class="campaign-card__title campaign-card__title--sub"><?php the_title(); ?></h2>
+                <?php if (get_field('campaign_1')) : ?>
+                  <p class="campaign-card__category"><?php the_field('campaign_1') ?></p>
+                <?php endif; ?>
+                <h2 class="campaign-card__title campaign-card__title--sub"><?php the_title(); if(!get_field('campaign_bosyuu')){echo '(募集停止)'; } ?></h2>
                 <p class="campaign-card__text campaign-card__text--sub">全部コミコミ(お一人様)</p>
                 <p class="campaign-card__price campaign-card__price--sub">
-                  <span class="campaign-card__price-disabled"><?php the_field('campaign_2') ?></span>
-                  <span class="campaign-card__price-current"><?php the_field('campaign_3') ?></span>
+                  <?php if (get_field('campaign_2')) : ?>
+                    <span class="campaign-card__price-disabled"><?php the_field('campaign_2') ?></span>
+                  <?php endif; ?>
+                  <?php if (get_field('campaign_3')) : ?>
+                    <span class="campaign-card__price-current"><?php the_field('campaign_3') ?></span>
+                  <?php endif; ?>
                 </p>
-                <p class="campaign-card__description u-desktop"><?php the_field('campaign_4') ?></p>
-                <p class="campaign-card__description-date u-desktop"><?php the_field('campaign_5') ?></p>
+                <?php if (get_field('campaign_4')) : ?>
+                  <p class="campaign-card__description u-desktop"><?php the_field('campaign_4') ?></p>
+                <?php endif; ?>
+                <?php if (get_field('campaign_5')) : ?>
+                  <p class="campaign-card__description-date u-desktop"><?php the_field('campaign_5') ?></p>
+                <?php endif; ?>
                 <p class="campaign-card__description-cta u-desktop">ご予約・お問い合わせはコチラ</p>
                 <div class="campaign-card__btn u-desktop">
                   <a class="btn" href="<?php echo esc_url(home_url('/contact/')); ?>">
