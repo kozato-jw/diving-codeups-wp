@@ -15,14 +15,12 @@
   <section class="information-sub information-sub-content icon-fish icon-fish--information">
     <div class="inner">
       <div class="information-sub__tab tab">
-        <!-- タブボタンの href を #tab- プレフィックスに変更 -->
         <a href="#tab-license" class="tab__btn active">ライセンス<br class="u-mobile">講習</a>
         <a href="#tab-fundiving" class="tab__btn">ファン<br class="u-mobile">ダイビング</a>
         <a href="#tab-trialdiving" class="tab__btn">体験<br class="u-mobile">ダイビング</a>
       </div>
 
       <div class="information-sub__cards">
-        <!-- カードの id を #tab- プレフィックスに変更 -->
         <div id="tab-license" class="information-sub__card information-card">
           <div class="information-card__inner">
             <div class="information-card__text-wrapper">
@@ -68,8 +66,7 @@
       </div>
     </div>
   </section>
-
+  <!-- 共通コンタクトエリア取得 -->
   <?php get_template_part('parts/common-contact'); ?>
-
 </main>
 <?php get_footer(); ?>

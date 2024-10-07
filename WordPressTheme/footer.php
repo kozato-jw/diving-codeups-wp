@@ -1,8 +1,12 @@
+  <?php
+  global $home, $campaign, $aboutus, $information, $blog, $voice, $price, $faq, $contact, $privacy, $termsofservice, $sitemap;
+  ?>
+
   <footer id="footer" class="footer">
     <div class="footer__inner inner">
       <div class="footer__head">
         <div class="footer__logo">
-          <a href="index.html">
+          <a href="<?php echo $home; ?>">
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/logo-white.png" alt="コードアップスのロゴ">
           </a>
         </div>
@@ -16,10 +20,6 @@
         </div>
       </div>
       <nav class="footer__nav gnav">
-        <!-- グローバル変数の再宣言 -->
-        <?php
-        global $campaign, $aboutus, $information, $blog, $voice, $price, $faq, $contact, $privacy, $termsofservice, $sitemap;
-        ?>
         <ul class="gnav__items">
           <li class="gnav__item gnav__item--main">
             <a href="<?php echo $campaign; ?>#category-tab-1">キャンペーン</a>

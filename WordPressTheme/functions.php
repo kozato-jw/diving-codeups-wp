@@ -118,7 +118,6 @@ function wpcf7_autop_return_false()
 // （ナビメニュー）グローバル変数の定義
 global $home, $campaign, $aboutus, $information, $blog, $voice, $price, $faq, $contact, $privacy, $termsofservice, $sitemap;
 
-
 $home = esc_url(home_url('/'));
 $campaign = esc_url(home_url('/campaign/'));
 $aboutus = esc_url(home_url('/about-us/'));
@@ -171,5 +170,16 @@ function Change_objectlabel()
 add_action('init', 'Change_objectlabel');
 add_action('admin_menu', 'Change_menulabel');
 
-//カスタムメニュー
-add_theme_support('menus');
+
+//サイドバー、ウィジェットエリアの登録
+add_action( 'widgets_init', function(){
+  register_sidebar( array(
+    'name' => 'ウィジェットエリアの名前',
+    'id' => 'my-widget',
+    'description' => 'ウィジェットエリアの説明',
+    'before_widget' => '<div id="%1$s" class="my-widget %2$s">',
+    'after_widget' => '</div>',
+    'before_title' => '<h3 class="my-widget-title">',
+    'after_title' => '</h3>',
+  ) );
+} );

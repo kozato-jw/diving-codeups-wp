@@ -9,6 +9,7 @@
   </section>
   <div class="breadcrumbs price-breadcrumbs">
     <div class="inner">
+      <!-- パンくずリスト取得 -->
       <?php get_template_part('parts/breadcrumb'); ?>
     </div>
   </div>
@@ -17,119 +18,52 @@
       <div class="price-sub__items price-lists">
 
         <?php
-        //カテゴリー名
-        $course_1_cat = scf::get('course_cat_1');
-        $course_2_cat = scf::get('course_cat_2');
-        $course_3_cat = scf::get('course_cat_3');
-        $course_4_cat = scf::get('course_cat_4');
-        // 繰り返しフィールドの情報
-        $course_1_data = scf::get('course_1');
-        $course_2_data = scf::get('course_2');
-        $course_3_data = scf::get('course_3');
-        $course_4_data = scf::get('course_4');
-        ?>
+        // カテゴリー名
+        $course_cats = [
+          scf::get('course_cat_1'),
+          scf::get('course_cat_2'),
+          scf::get('course_cat_3'),
+          scf::get('course_cat_4'),
+        ];
+        // 項目と金額
+        $course_data = [
+          scf::get('course_1'),
+          scf::get('course_2'),
+          scf::get('course_3'),
+          scf::get('course_4'),
+        ];
 
-        <?php
-        if (!empty($course_1_cat) && !empty($course_1_data)) :
+        for ($i = 0; $i < 4; $i++) :
+          if (!empty($course_cats[$i]) && !empty($course_data[$i])) :
         ?>
-          <div id="licensediving" class="price-lists__item price-list">
-            <div class="price-list__title">
-              <h2 class="price-list__title-text"><?php echo ($course_1_cat); ?></h2>
+            <div id="licensediving" class="price-lists__item price-list">
+              <div class="price-list__title">
+                <h2 class="price-list__title-text"><?php echo ($course_cats[$i]); ?></h2>
+              </div>
+              <table class="price-list__list">
+                <?php
+                foreach ($course_data[$i] as $index => $course) :
+                  $course_name = $course['course_name_' . ($i + 1)];
+                  $course_price = $course['course_price_' . ($i + 1)];
+                ?>
+                  <tr>
+                    <th class="price-list__head"><?php echo wp_kses_post($course_name); ?></th>
+                    <td class="price-list__price"><?php echo esc_html($course_price); ?></td>
+                  </tr>
+                <?php
+                endforeach;
+                ?>
+              </table>
             </div>
-            <table class="price-list__list">
-              <?php
-              foreach ($course_1_data as $index => $course) :
-                $course_name = $course['course_name_1'];
-                $course_price = $course['course_price_1'];
-              ?>
-                <tr>
-                  <th class="price-list__head"><?php echo wp_kses_post($course_name); ?></th>
-                  <td class="price-list__price"><?php echo esc_html($course_price); ?></td>
-                </tr>
-              <?php
-              endforeach;
-              ?>
-            </table>
-          </div>
-        <?php endif; ?>
-
         <?php
-        if (!empty($course_2_cat) && !empty($course_2_data)) :
+          endif;
+        endfor;
         ?>
-          <div id="licensediving" class="price-lists__item price-list">
-            <div class="price-list__title">
-              <h2 class="price-list__title-text"><?php echo ($course_2_cat); ?></h2>
-            </div>
-            <table class="price-list__list">
-              <?php
-              foreach ($course_2_data as $index => $course) :
-                $course_name = $course['course_name_2'];
-                $course_price = $course['course_price_2'];
-              ?>
-                <tr>
-                  <th class="price-list__head"><?php echo wp_kses_post($course_name); ?></th>
-                  <td class="price-list__price"><?php echo esc_html($course_price); ?></td>
-                </tr>
-              <?php
-              endforeach;
-              ?>
-            </table>
-          </div>
-        <?php endif; ?>
-
-        <?php
-        if (!empty($course_3_cat) && !empty($course_3_data)) :
-        ?>
-          <div id="licensediving" class="price-lists__item price-list">
-            <div class="price-list__title">
-              <h2 class="price-list__title-text"><?php echo ($course_3_cat); ?></h2>
-            </div>
-            <table class="price-list__list">
-              <?php
-              foreach ($course_3_data as $index => $course) :
-                $course_name = $course['course_name_3'];
-                $course_price = $course['course_price_3'];
-              ?>
-                <tr>
-                  <th class="price-list__head"><?php echo wp_kses_post($course_name); ?></th>
-                  <td class="price-list__price"><?php echo esc_html($course_price); ?></td>
-                </tr>
-              <?php
-              endforeach;
-              ?>
-            </table>
-          </div>
-        <?php endif; ?>
-
-        <?php
-        if (!empty($course_4_cat) && !empty($course_4_data)) :
-        ?>
-          <div id="licensediving" class="price-lists__item price-list">
-            <div class="price-list__title">
-              <h2 class="price-list__title-text"><?php echo ($course_4_cat); ?></h2>
-            </div>
-            <table class="price-list__list">
-              <?php
-              foreach ($course_4_data as $index => $course) :
-                $course_name = $course['course_name_4'];
-                $course_price = $course['course_price_4'];
-              ?>
-                <tr>
-                  <th class="price-list__head"><?php echo wp_kses_post($course_name); ?></th>
-                  <td class="price-list__price"><?php echo esc_html($course_price); ?></td>
-                </tr>
-              <?php
-              endforeach;
-              ?>
-            </table>
-          </div>
-        <?php endif; ?>
 
       </div>
     </div>
   </section>
-
+  <!-- 共通コンタクトエリア取得 -->
   <?php get_template_part('parts/common-contact'); ?>
-
 </main>
 <?php get_footer(); ?>
