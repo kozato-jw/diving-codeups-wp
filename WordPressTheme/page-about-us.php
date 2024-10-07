@@ -10,6 +10,7 @@
   </section>
   <div class="breadcrumbs about-breadcrumbs">
     <div class="inner">
+      <!-- パンくずリスト取得 -->
       <?php get_template_part('parts/breadcrumb'); ?>
     </div>
   </div>
@@ -40,34 +41,29 @@
         <p class="section-title__en section-title__en--gallery">gallery</p>
         <h2 class="section-title__ja">フォト</h2>
       </div>
+      <!-- 繰り返しフィールド開始 -->
+      <?php
+      $gallery_images = scf::get('gallery');
+      ?>
       <div class="gallery__images">
-        <div class="gallery__image">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery1.jpg" alt="海中を泳ぐ魚の画像">
-        </div>
-        <div class="gallery__image">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery2.jpg" alt="浅瀬に浮かぶ船の画像">
-        </div>
-        <div class="gallery__image">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery3.jpg" alt="海中を泳ぐ魚の画像">
-        </div>
-        <div class="gallery__image">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery4.jpg" alt="海中を泳ぐ魚の画像">
-        </div>
-        <div class="gallery__image">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery5.jpg" alt="海中を泳ぐ魚の画像">
-        </div>
-        <div class="gallery__image">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery6.jpg" alt="海中を泳ぐ魚の画像">
-        </div>
+        <?php
+        foreach ($gallery_images as $gallery_image) :
+        ?>
+          <div class="gallery__image">
+            <?php if (!empty($gallery_image)) : ?>
+              <img src="<?php echo wp_get_attachment_url($gallery_image['gallery_image']); ?>" alt="ギャラリーの画像">
+            <?php endif; ?>
+          </div>
+        <?php endforeach; ?>
       </div>
+      <!-- 繰り返しフィールド終了 -->
     </div>
     <!-- モーダル用のHTML -->
     <div id="modal" class="modal">
-      <img id="modalimage" class="modal__content" alt="">
+      <img id="modalimage" class="modal__content" alt="ギャラリーの画像">
     </div>
   </section>
-
+  <!-- 共通コンタクトエリア取得 -->
   <?php get_template_part('parts/common-contact'); ?>
-
 </main>
 <?php get_footer(); ?>

@@ -9,7 +9,6 @@
   </section>
   <div class="breadcrumbs blog-breadcrumbs">
     <div class="inner">
-      <!-- パンくずリスト取得 -->
       <?php get_template_part('parts/breadcrumb'); ?>
     </div>
   </div>
@@ -50,14 +49,11 @@
           endif; ?>
           <!-- ループ終了 -->
         </div>
-        <!-- ページネーション取得 -->
         <?php wp_pagenavi(); ?>
       </div>
-      <!-- サイドバー取得 -->
       <?php get_sidebar(); ?>
     </div>
   </div>
-  <!-- 共通コンタクトエリア取得 -->
   <?php get_template_part('parts/common-contact'); ?>
 </main>
 <?php get_footer(); ?>

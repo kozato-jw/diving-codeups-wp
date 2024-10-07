@@ -65,6 +65,7 @@ function my_theme_enqueue_styles_and_scripts()
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles_and_scripts');
 
 
+
 function my_setup()
 {
   add_theme_support('post-thumbnails'); /* アイキャッチ */
@@ -104,3 +105,81 @@ function change_posts_per_page_voice($query)
   }
 }
 add_action('pre_get_posts', 'change_posts_per_page_voice');
+
+// Contact Form 7で自動挿入されるPタグ、brタグを削除
+add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
+function wpcf7_autop_return_false()
+{
+  return false;
+}
+
+
+
+// （ナビメニュー）グローバル変数の定義
+global $home, $campaign, $aboutus, $information, $blog, $voice, $price, $faq, $contact, $privacy, $termsofservice, $sitemap;
+
+$home = esc_url(home_url('/'));
+$campaign = esc_url(home_url('/campaign/'));
+$aboutus = esc_url(home_url('/about-us/'));
+$information = esc_url(home_url('/information/'));
+$blog = esc_url(home_url('/blog/'));
+$voice = esc_url(home_url('/voice/'));
+$price = esc_url(home_url('/price/'));
+$faq = esc_url(home_url('/faq/'));
+$contact = esc_url(home_url('/contact/'));
+$privacy = esc_url(home_url('/privacypolicy/'));
+$termsofservice = esc_url(home_url('/terms-of-service/'));
+$sitemap = esc_url(home_url('/sitemap/'));
+
+
+//投稿タイプのエディターを非表示
+add_action('init', 'my_remove_post_support');
+function my_remove_post_support()
+{
+  remove_post_type_support('campaign', 'editor');
+  remove_post_type_support('voice', 'editor');
+  remove_post_type_support('page', 'editor');
+}
+
+//通常投稿の名称変更
+function Change_menulabel()
+{
+  global $menu;
+  global $submenu;
+  $name = 'ブログ';
+  $menu[5][0] = $name;
+  $submenu['edit.php'][5][0] = $name . '一覧';
+  $submenu['edit.php'][10][0] = '新しい' . $name;
+}
+function Change_objectlabel()
+{
+  global $wp_post_types;
+  $name = 'ブログ';
+  $labels = &$wp_post_types['post']->labels;
+  $labels->name = $name;
+  $labels->singular_name = $name;
+  $labels->add_new = _x('追加', $name);
+  $labels->add_new_item = $name . 'の新規追加';
+  $labels->edit_item = $name . 'の編集';
+  $labels->new_item = '新規' . $name;
+  $labels->view_item = $name . 'を表示';
+  $labels->search_items = $name . 'を検索';
+  $labels->not_found = $name . 'が見つかりませんでした';
+  $labels->not_found_in_trash = 'ゴミ箱に' . $name . 'は見つかりませんでした';
+}
+add_action('init', 'Change_objectlabel');
+add_action('admin_menu', 'Change_menulabel');
+
+
+//サイドバー、ウィジェットエリアの登録
+add_action( 'widgets_init', function(){
+  register_sidebar( array(
+    'name' => 'ウィジェットエリアの名前',
+    'id' => 'my-widget',
+    'description' => 'ウィジェットエリアの説明',
+    'before_widget' => '<div id="%1$s" class="my-widget %2$s">',
+    'after_widget' => '</div>',
+    'before_title' => '<h3 class="my-widget-title">',
+    'after_title' => '</h3>',
+  ) );
+} );

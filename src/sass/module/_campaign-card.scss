@@ -164,7 +164,7 @@
   position: absolute;
   bottom: rem(11);
   @include mq(md){
-    width: rem(90);
+    // width: rem(90);
     bottom: rem(12);
   }
 }

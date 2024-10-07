@@ -1,3 +1,10 @@
+<?php
+$voice_taxonomy = get_query_var('voice_category');
+$voice_license = get_term_by('slug', '$voice_taxonomy', 'license');
+$voice_fundiving = get_term_by('slug', '$voice_taxonomy', 'fundiving');
+$voice_experience = get_term_by('slug', '$voice_taxonomy', 'experience');
+?>
+
 <?php get_header(); ?>
 <main>
   <section class="mv-sub voice-mv">
@@ -9,32 +16,39 @@
   </section>
   <div class="breadcrumbs voice-breadcrumbs">
     <div class="inner">
-      <!-- パンくずリスト取得 -->
       <?php get_template_part('parts/breadcrumb'); ?>
     </div>
   </div>
   <div class="voice-sub voice-sub-content icon-fish">
     <div class="inner">
-
       <!-- カスタムタクソノミー/Custom Post Type UI -->
       <div class="voice-sub__category category">
+        <!-- 「すべて」のタブリンク -->
         <a href="<?php echo get_post_type_archive_link('voice'); ?>" class="category__btn active" data-tab="tab-1">all</a>
+
         <?php
+        // voice_categoryタクソノミーからタームを取得
         $terms = get_terms(array(
           'taxonomy' => 'voice_category',
-          'hide_empty' => false,
+          'hide_empty' => false, // 空のタームも表示する
         ));
+
+        // タームが取得できた場合の処理
         if (!empty($terms) && !is_wp_error($terms)) {
-          $tab_index = 2;
+          $tab_index = 2; // タブインデックスの初期値
           foreach ($terms as $term) {
+            // タームのリンクURLを取得
             $term_link = get_term_link($term);
             if (is_wp_error($term_link)) {
-              continue;
+              continue; // エラーが発生した場合は次のループに進む
             }
         ?>
-            <a href="<?php echo esc_url($term_link); ?>" class="category__btn" data-tab="tab-<?php echo $tab_index; ?>"><?php echo esc_html($term->name); ?></a>
+            <!-- タームに基づくリンクを生成 -->
+            <a href="<?php echo esc_url($term_link); ?>" class="category__btn" data-tab="tab-<?php echo $tab_index; ?>">
+              <?php echo esc_html($term->name); ?>
+            </a>
         <?php
-            $tab_index++;
+            $tab_index++; // タブインデックスをインクリメント
           }
         }
         ?>
@@ -85,11 +99,13 @@
         <!-- ループ終了 -->
 
       </div>
-      <!-- ページネーション取得 -->
+
       <?php wp_pagenavi(); ?>
+
     </div>
   </div>
-  <!-- 共通コンタクトエリア取得 -->
+
   <?php get_template_part('parts/common-contact'); ?>
+
 </main>
 <?php get_footer(); ?>

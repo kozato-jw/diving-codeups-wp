@@ -1,8 +1,12 @@
+  <?php
+  global $home, $campaign, $aboutus, $information, $blog, $voice, $price, $faq, $contact, $privacy, $termsofservice, $sitemap;
+  ?>
+
   <footer id="footer" class="footer">
     <div class="footer__inner inner">
       <div class="footer__head">
         <div class="footer__logo">
-          <a href="index.html">
+          <a href="<?php echo $home; ?>">
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/logo-white.png" alt="コードアップスのロゴ">
           </a>
         </div>
@@ -18,72 +22,72 @@
       <nav class="footer__nav gnav">
         <ul class="gnav__items">
           <li class="gnav__item gnav__item--main">
-            <a href="archive-campaign.html#category-tab-1">キャンペーン</a>
+            <a href="<?php echo $campaign; ?>#category-tab-1">キャンペーン</a>
           </li>
           <li class="gnav__item gnav__item--sub">
-            <a href="archive-campaign.html#category-tab-2">ライセンス取得</a>
+            <a href="<?php echo $campaign; ?>#category-tab-2">ライセンス取得</a>
           </li>
           <li class="gnav__item gnav__item--sub">
-            <a href="archive-campaign.html#category-tab-3">貸切体験ダイビング</a>
+            <a href="<?php echo $campaign; ?>#category-tab-3">貸切体験ダイビング</a>
           </li>
           <li class="gnav__item gnav__item--sub gnav__item--mb40">
-            <a href="archive-campaign.html#category-tab-4">ファンダイビング</a>
+            <a href="<?php echo $campaign; ?>#category-tab-4">ファンダイビング</a>
           </li>
           <li class="gnav__item gnav__item--main">
-            <a href="page-about-us.html">私たちについて</a>
+            <a href="<?php echo $aboutus; ?>">私たちについて</a>
           </li>
         </ul>
         <ul class="gnav__items">
           <li class="gnav__item gnav__item--main gnav__item--mb40">
-            <a href="archive-voice.html">お客様の声 </a>
+            <a href="<?php echo $voice; ?>">お客様の声 </a>
           </li>
           <li class="gnav__item gnav__item--main">
-            <a href="page-price.html">料金一覧 </a>
+            <a href="<?php echo $price; ?>">料金一覧 </a>
           </li>
           <li class="gnav__item gnav__item--sub">
-            <a href="page-price.html#licensediving">ライセンス講習</a>
+            <a href="<?php echo $price; ?>#licensediving">ライセンス講習</a>
           </li>
           <li class="gnav__item gnav__item--sub">
-            <a href="page-price.html#trialdiving">体験ダイビング</a>
+            <a href="<?php echo $price; ?>#trialdiving">体験ダイビング</a>
           </li>
           <li class="gnav__item gnav__item--sub gnav__item--mb40">
-            <a href="page-price.html#fundiving">ファンダイビング</a>
+            <a href="<?php echo $price; ?>#fundiving">ファンダイビング</a>
           </li>
         </ul>
         <ul class="gnav__items">
           <li class="gnav__item gnav__item--main">
-            <a href="page-information.html">ダイビング情報 </a>
+            <a href="<?php echo $information; ?>">ダイビング情報 </a>
           </li>
           <li class="gnav__item gnav__item--sub">
-            <a href="page-information.html#tab-license">ライセンス講習</a>
+            <a href="<?php echo $information; ?>#tab-license">ライセンス講習</a>
           </li>
           <li class="gnav__item gnav__item--sub">
-            <a href="page-information.html#tab-trialdiving">体験ダイビング</a>
+            <a href="<?php echo $information; ?>#tab-trialdiving">体験ダイビング</a>
           </li>
           <li class="gnav__item gnav__item--sub gnav__item--mb40">
-            <a href="page-information.html#tab-fundiving">ファンダイビング</a>
+            <a href="<?php echo $information; ?>#tab-fundiving">ファンダイビング</a>
           </li>
           <li class="gnav__item gnav__item--main">
-            <a href="home.html">ブログ</a>
+            <a href="<?php echo $blog; ?>">ブログ</a>
           </li>
         </ul>
         <ul class="gnav__items">
           <li class="gnav__item gnav__item--main gnav__item--mb40">
-            <a href="page-faq.html">よくある質問</a>
+            <a href="<?php echo $faq; ?>">よくある質問</a>
           </li>
           <li class="gnav__item gnav__item--main gnav__item--mb40">
-            <a href="page-privacypolicy.html">プライバシー
+            <a href="<?php echo $privacy; ?>">プライバシー
               <br class="u-mobile">ポリシー
             </a>
           </li>
           <li class="gnav__item gnav__item--main gnav__item--mb40">
-            <a href="page-terms-of-service.html">利用規約</a>
+            <a href="<?php echo $termsofservice; ?>">利用規約</a>
           </li>
           <li class="gnav__item gnav__item--main gnav__item--mb40">
-            <a href="page-sitemap.html">サイトマップ</a>
+            <a href="<?php echo $sitemap; ?>">サイトマップ</a>
           </li>
           <li class="gnav__item gnav__item--main gnav__item--mb40">
-            <a href="page-contact.html">お問い合わせ</a>
+            <a href="<?php echo $contact; ?>">お問い合わせ</a>
           </li>
         </ul>
       </nav>
@@ -97,4 +101,5 @@
   </footer>
   <?php wp_footer(); ?>
   </body>
+
   </html>

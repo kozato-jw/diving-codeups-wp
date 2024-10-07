@@ -1,3 +1,5 @@
+<?php global $contact; ?>
+
   <!-- 共通コンタクトエリア -->
   <section class="common-contact top-contact">
     <div class="inner">
@@ -28,7 +30,7 @@
           </div>
           <p class="common-contact__text">ご予約・お問い合わせはコチラ</p>
           <div class="common-contact__btn">
-            <a class="btn" href="page-contact.html">
+            <a class="btn" href="<?php echo $contact; ?>">
               <span class="btn__inner">contact&nbsp;us </span>
             </a>
           </div>
